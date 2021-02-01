@@ -1,0 +1,119 @@
+p {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+a {
+    color: orangered;
+    text-decoration: 0;
+}
+
+a:hover {
+    color: deepskyblue;
+}
+
+body {
+    background-color: rgb(255, 255, 245);
+}
+
+button {
+    background-color: lightblue;
+    
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    color: rgb(51, 51, 51);
+
+    height: 100%;
+    width: 100%;
+    margin: 1px;
+
+    border: 0;
+    border-radius: 10px;
+}
+
+button:hover {
+    border: 2px solid orange;
+}
+
+/* Will need to adjust height, width, and negative margins (for spacing) to fit
+   smartphones due to border increase when finished. */
+.calculator {
+    background-color: lightslategrey;
+    height: 460px;
+    width: 340px;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    grid-template-areas:
+        'display display display display'
+        'ac ac c c'
+        'seven eight nine divide'
+        'four five six multiply'
+        'one two three subtract'
+        'zero decimal negative add'
+        'equals equals equals equals';
+    gap: 5px;
+    justify-items: center;
+    align-items: center;
+
+    border: 10px solid lightslategrey;
+    border-radius: 10px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -240px 0 0 -180px;
+}
+
+.calc-display {
+    background-color: lightsteelblue;
+    
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 44px;
+    color: rgb(51, 51, 51);
+
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+
+    text-align: right;
+    line-height: 50px;
+    white-space: nowrap;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+footer {
+    text-align: center;
+
+    width: 100%;
+    margin: 20px;
+
+    position: fixed;
+    bottom: 0;
+}
+
+/* GRID AREAS */
+#calc-display {grid-area: display;}
+#calc-ac {grid-area: ac;}
+#calc-c {grid-area: c;}
+#calc-0 {grid-area: zero;}
+#calc-1 {grid-area: one;}
+#calc-2 {grid-area: two;}
+#calc-3 {grid-area: three;}
+#calc-4 {grid-area: four;}
+#calc-5 {grid-area: five;}
+#calc-6 {grid-area: six;}
+#calc-7 {grid-area: seven;}
+#calc-8 {grid-area: eight;}
+#calc-9 {grid-area: nine;}
+#calc-decimal {grid-area: decimal;}
+#calc-negative {grid-area: negative;}
+#calc-equals {grid-area: equals;}
+#calc-add {grid-area: add;}
+#calc-subtract {grid-area: subtract;}
+#calc-multiply {grid-area: multiply;}
+#calc-divide {grid-area: divide;}
