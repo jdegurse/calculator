@@ -139,6 +139,9 @@ function divideClick() {
 
 function equalsClick() {
     if (!memory || !operator || !number_entered) {
+        if (calc_display.textContent = '318008') {
+            calc_display.textContent = 'BOOBIE!'
+        }
         return
     }
     calc_display.textContent = fitDigits(
