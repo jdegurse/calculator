@@ -18,6 +18,8 @@ let operated = false;
 //     operand and the display, which is still the first operand.
 let number_entered = false;
 
+let is_exponential = false;
+
 
 
 ////////        EVENT FUNCTIONS        ////////
@@ -68,6 +70,8 @@ function cClick() {
 
 function acClick() {
     memory = operator = null;
+    operated = false;
+    number_entered = false;
     calc_display.textContent = '';
 }
 
@@ -137,8 +141,8 @@ function equalsClick() {
     if (!memory || !operator || !number_entered) {
         return
     }
-    calc_display.textContent = operate(
-        Number(memory), Number(calc_display.textContent), operator
+    calc_display.textContent = fitDigits(
+        operate(Number(memory), Number(calc_display.textContent), operator)
     );
     operator = null;
 }
@@ -180,25 +184,28 @@ function fitDigits(ans) {
     // Fits digits to the calculator and accounts for some floating point math
     //     errors.
 
-    // Rule 1: always reduce decimals in a +/- operation to that of the operand
-    //     with the largest number of decimal places
     if (
         (operator === '+' || operator === '-')
         && (ans.toString().includes('.'))
     ) {
         ans = sumRound(ans);
     }
-
-
     if (ans.toString().length > max_digits) {
-        //do the reducing based on rules, if L > 4 e first then round
-        //otherwise just round it to fit
-        if (ans.includes('.')) {
-            return;
+        if (ans.toString().includes('.')) {
+            let ints = intDecLengths(ans)[0];
+            if (ints > 4) {
+                ans = ans.toExponential(max_digits - 5);
+                is_exponential = true
+            }
+            else {
+                ans = Number(ans).toFixed(max_digits - (ints + 2));
+            }
+        }
+        else {
+            ans = ans.toExponential(max_digits - 5);
+            is_exponential = true
         }
     }
-
-
     return ans;
 }
 

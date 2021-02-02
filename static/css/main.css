@@ -43,9 +43,10 @@ button:hover {
 
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(7, 1fr);
+    grid-template-rows: 1fr 0px repeat(6, 1fr);
     grid-template-areas:
         'display display display display'
+        '. . . .'
         'ac ac c c'
         'seven eight nine divide'
         'four five six multiply'
